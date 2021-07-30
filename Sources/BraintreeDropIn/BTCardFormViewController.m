@@ -84,7 +84,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{
                                                                       NSForegroundColorAttributeName: [BTUIKAppearance sharedInstance].primaryTextColor
                                                                       }];
-
+    self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
     self.scrollView = [[UIScrollView alloc] init];
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView setAlwaysBounceVertical:NO];

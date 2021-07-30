@@ -302,11 +302,16 @@
     vd.supportedCardTypes = self.displayCardTypes;
     vd.delegate = self;
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:vd];
-    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        navController.modalPresentationStyle = UIModalPresentationPageSheet;
+
+    if (@available(iOS 13.0, *)) {
+        navController.modalPresentationStyle = UIModalPresentationAutomatic;
     } else {
-        navController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    }
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            navController.modalPresentationStyle = UIModalPresentationPageSheet;
+        } else {
+            navController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        }
+	}
     [self presentViewController:navController animated:YES completion:nil];
 }
 
